@@ -19,7 +19,7 @@ const requests = {
 const Data = {
   getStudent: (): Promise<StudentType[]> => requests.get("student"),
   retrieveStudent: (id: number): Promise<StudentType> => requests.get(`student/${id}`),
-  createStudent: (post: StudentType): Promise<StudentType> => requests.post("student", post),
+  createStudent: (post: StudentType): Promise<StudentType> => requests.post("student/", post),
   updateStudent: (id: number, post: StudentType): Promise<StudentType> => requests.put(`student/${id}`, post),
   deleteStudent: (id: number): Promise<void> => requests.delete(`student/${id}`),
 };

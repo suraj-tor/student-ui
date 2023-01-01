@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface StudentType {
-  student_id: number;
+  student_id?: number;
   name: string;
   grade: number;
   division: string;
@@ -29,10 +29,13 @@ const studentReducer = createSlice({
   initialState: StudentState,
   reducers: {
     getStudent(state, action) {
-      return [ ...action.payload];
+      return [...action.payload];
     },
     retrieveOneStudent(state, action) {
-      return [ action.payload];
+      return [action.payload];
+    },
+    createStudent(state, action) {
+      return [...state, action.payload];
     },
   },
 });
