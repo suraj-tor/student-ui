@@ -13,11 +13,11 @@ export const GetStudents = () => {
   };
 };
 
-export const RetrieveStudent = (id:number) => {
+export const DetailsStudent = (id:number) => {
   return async (dispatch:Dispatch) => {
     try {
       const res = await Data.retrieveStudent(id);
-      dispatch(studentAction.retrieveStudent(res));
+      dispatch(studentAction.retrieveOneStudent(res));
     } catch (error) {
       console.log("something went wrong", error);
     }

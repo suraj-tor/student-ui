@@ -29,10 +29,10 @@ const studentReducer = createSlice({
   initialState: StudentState,
   reducers: {
     getStudent(state, action) {
-      return [...action.payload];
+      return [ ...action.payload];
     },
-    retrieveStudent(state, action) {
-      return [...action.payload];
+    retrieveOneStudent(state, action) {
+      return [ action.payload];
     },
   },
 });
