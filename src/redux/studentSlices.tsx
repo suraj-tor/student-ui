@@ -37,6 +37,12 @@ const studentReducer = createSlice({
     createStudent(state, action) {
       return [...state, action.payload];
     },
+    removeStudent(state, action) {
+      return [...state];
+    },
+    updateStudent(state, action) {
+      return [...state, ...action.payload];
+    },
   },
 });
 

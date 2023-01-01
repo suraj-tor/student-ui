@@ -2,19 +2,20 @@ import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormCon
 import React, { useEffect, useReducer, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { studentReducerState } from "../redux/store";
-import { CreateStudent, GetStudents } from "../redux/studentActions";
+import { CreateStudent, DeleteStudent, GetStudents } from "../redux/studentActions";
 import LaunchIcon from "@mui/icons-material/Launch";
 import { Link } from "react-router-dom";
 import { StudentType } from "../redux/studentSlices";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 let initialData = {
   name: "",
-  grade: '',
+  grade: "",
   division: "",
-  rollNo: '',
+  rollNo: "",
   address: "",
   busStop: "",
-  route: '',
+  route: "",
   nameTouched: false,
   gradeTouched: false,
   divisionTouched: false,
@@ -167,6 +168,7 @@ const Student = () => {
     dispatch({ type: "addressTouched", payload: false });
     dispatch({ type: "busStopTouched", payload: false });
     dispatch({ type: "routeTouched", payload: false });
+    setOpen(false);
   };
 
   return (
@@ -227,7 +229,10 @@ const Student = () => {
                     <TableCell>{element.roll_no}</TableCell>
                     <TableCell>{element.address}</TableCell>
                     <TableCell>{element.bus_stop}</TableCell>
-                    <TableCell>
+                    <TableCell sx={{ alignContent: "center", alignItems: "center" }}>
+                      <Button onClick={() => studentdispatch(DeleteStudent(element.student_id as number))}>
+                        <DeleteForeverIcon />
+                      </Button>
                       <Link to={`${element.student_id}`} style={{ textDecoration: "none" }}>
                         <LaunchIcon />
                       </Link>
